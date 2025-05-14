@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loratorio 13 - Funciones JS</title>
+    <style>
+        body{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: rgb(155, 236, 209);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .Calculadora-Container{
+            background-color: rgb(208, 228, 233);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgb(149, 149, 224);
+            padding: 25px;
+            width: 300px;
+
+        }
+
+        h1{
+            text-align: center;
+            color: blueviolet;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .input-group{
+            margin-bottom: 15px;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+            color: rgb(5, 114, 10);
+        }
+        input, select{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid burlywood;
+            box-sizing: border-box;
+        }
+        button{
+            background-color: rgb(56, 112, 34);
+            color: aliceblue;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover{
+            background-color: rgb(127, 189, 27);
+        }
+        #resultado{
+            margin: 20px;
+            padding: 10px;
+            background-color: rgb(195, 221, 238);
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="Calculadora-Container">
+        <h1>Calculadora Talento Techt</h1>
+        <div class="input-group">
+            <label for="numero1">Primer Numero</label>
+            <input type="number"id="numero1" placeholder="Ingrese el numero 1">
+
+        </div>
+        <div class="input-group">
+            <label for="numero2">Segundo numero</label>
+            <input type="number" id="numero2" placeholder="Ingrese el numero 2">
+        </div>
+        <div class="input-group">
+            <label for="operacion">Operacion</label>
+            <select id="operacion">
+                <option value="suma">Sumar(+)</option>
+                <option value="resta">Restar(-)</option>
+                <option value="multiplicacion">Multiplicar(*)</option>
+                <option value="dividir">Dividir(/)</option>
+            </select>
+
+        </div>
+        <button onclick="calculos()">Calcular</button>
+
+        <div id="resultado">
+            El Resultado Se Muestra AQUI
+
+        </div>
+
+    </div>
+
+    <script>
+        function sumar(a,b){
+            return a+b
+
+        }
+        function restar (a,b){
+            return a-b
+        }
+        function multiplicar(a,b){
+            return a*b
+        }
+        function dividir(a,b){
+            if(b==0){
+                return "Error: No se puede dividir por 0"
+
+            }
+            return a/b
+            
+        }
+        function calculadora(a,b,operacion){
+            if(operacion=="suma"){
+                return sumar(a,b)
+
+            }else if(operacion=="resta"){
+                return restar(a,b)
+
+            }else if(operacion=="multiplicacion"){
+                return multiplicar(a,b)
+
+            }else if(operacion=="dividir"){
+                return dividir(a,b)
+
+            }
+
+        }
+        function calculos(){
+            const a=parseFloat(document.getElementById('numero1').value)
+            const b=parseFloat(document.getElementById('numero2').value)
+            const op=document.getElementById('operacion').value
+
+          let resultado=0
+          resultado=calculadora(a,b,op)
+          document.getElementById("resultado").innerHTML=`Resultado:<br> ${resultado}`
+          alert(resultado)
+        }
+    </script>
+</body>
+</html>
